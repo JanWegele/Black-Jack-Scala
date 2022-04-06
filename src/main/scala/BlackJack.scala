@@ -4,7 +4,7 @@
 
 val eo1: String = sys.props("line.separator")
 
-val widthDefault: Int = 60
+val widthDefault: Int = 30
 val lengthDefault: Int = 5
 val widthCard: Int = 4
 
@@ -13,14 +13,19 @@ def space() = " "
 //-------------------------------------------------/Table
 //Table width
 def width(width: Int): Int =
-  if(width<3){
-    width
-  }else {
+  if(width<10){
     widthDefault
+
+  } else {
+    if(width%2 == 0){
+      widthDefault
+    } else {
+      width+1
+    }
   }
 
 
-val widthParam: Int = width(3)
+val widthParam: Int = width(15)
 
 
 //Table default methods
@@ -40,12 +45,12 @@ def cells(width: Int): String =
 //Table length
 def length(length: Int): Int =
   if(length<0){
-    length
-  }else {
     lengthDefault
+  }else {
+    length
   }
 
-val lengthParam: Int = length(-1)
+val lengthParam: Int = length(0)
 
 
 //-------------------------------------------------/Card
@@ -78,5 +83,5 @@ def cardTotal(width: Int): String =
 
 //-------------------------------------------------/Mesh
 //Putting Table and Card together
-val mesh: String = tableWidth(widthParam) + cardTotal(widthParam) + cells(widthParam)*length(lengthDefault) + cardTotal(widthParam) + tableWidth(widthParam)
+val mesh: String = tableWidth(widthParam) + cardTotal(widthParam) + cells(widthParam)*length(lengthParam) + cardTotal(widthParam) + tableWidth(widthParam)
 val meshDefault: String = tableWidth() + cardTotal(widthDefault) + cells()*length(lengthDefault) + cardTotal(widthDefault) + tableWidth()
