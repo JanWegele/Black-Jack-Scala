@@ -1,46 +1,82 @@
-@main def BlackJack(): Unit =
+@main def hello(): Unit =
   println("!!This is BlackJack!!")
   println(mesh)
 
 val eo1: String = sys.props("line.separator")
 
-val width: Int = 100
-val length: Int = 5
-val cwidth: Int = 4
-val cWidthtotal: Int = ((width-6)*0.5).toInt
-
+val widthDefault: Int = 60
+val lengthDefault: Int = 5
+val widthCard: Int = 4
 
 def space() = " "
 
-//Table
+//-------------------------------------------------/Table
+//Table width
+def width(width: Int): Int =
+  if(width<3){
+    width
+  }else {
+    widthDefault
+  }
+
+
+val widthParam: Int = width(3)
+
+
+//Table default methods
 def tableWidth(): String =
-  "+" + ("-" * width) + "+" + eo1
+  "+" + ("-" * widthDefault) + "+" + eo1
 def cells(): String =
+  "|" + space()*widthDefault + "|" + eo1
+
+
+//Table method overloading
+def tableWidth(width: Int): String =
+  "+" + ("-" * width) + "+" + eo1
+def cells(width: Int): String =
   "|" + space()*width + "|" + eo1
 
-//Card
 
-def cardWidth(): String =
-  "+" + ("-"*cwidth) + "+"
-def cardLength(): String =
-  "|" + (space()*cwidth) + "|"
+//Table length
+def length(length: Int): Int =
+  if(length<0){
+    length
+  }else {
+    lengthDefault
+  }
 
-def cardTotalWidth(): String =
-  "|" + (space()*cWidthtotal) + cardWidth() + (space()*cWidthtotal) + "|" + eo1
-def cardTotalHeight(): String =
-  "|" + (space()*cWidthtotal) + cardLength() + (space()*cWidthtotal) + "|" + eo1
-def cardTotal(): String =
-  cardTotalWidth() + cardTotalHeight()*2 + cardTotalWidth()
+val lengthParam: Int = length(-1)
 
 
-/*def cardMidTop(): String =
-  ("|" + space() * 26 + "|" + space() + "|" + "/" + space() + "|" + space() * 26 + "|")
-def cardMidBottom(): String =
-  ("|" + space() * 26 + "|" + space() + "|" + "\\" + space() + "|" + space() * 26 + "|")
-def card(): String =
-  ("|" + space() * 26 + "+----+" + space() * 26 + "|" + eo1 + cardMidTop() + eo1 + cardMidBottom() + eo1 +
-  "|" + space() * 26 + "+----+" + space() * 26 + "|" + eo1)*/
+//-------------------------------------------------/Card
+//making card scalable with table size
+def widthForCard(width: Int): Int =
+  ((width-(widthCard+2))*0.5).toInt
 
 
+//Card size should not be scalable
+val cardWidth: String =
+  "+" + ("-"*widthCard) + "+"
+val cardLength: String =
+  "|" + (space()*widthCard) + "|"
+
+
+
+//-------------------------------------------------/Card and Table
+//Fitting card on the table
+def cardTotalWidth(width: Int): String =
+  "|" + (space()*widthForCard(width)) + cardWidth + (space()*widthForCard(width)) + "|" + eo1
+
+def cardTotalHeight(width: Int): String =
+  "|" + (space()*widthForCard(width)) + cardLength + (space()*widthForCard(width)) + "|" + eo1
+
+def cardTotal(width: Int): String =
+  cardTotalWidth(width) + cardTotalHeight(width)*2 + cardTotalWidth(width)
+
+
+
+
+//-------------------------------------------------/Mesh
 //Putting Table and Card together
-val mesh: String = tableWidth() + cardTotal() + cells()*length + cardTotal() + tableWidth()
+val mesh: String = tableWidth(widthParam) + cardTotal(widthParam) + cells(widthParam)*length(lengthDefault) + cardTotal(widthParam) + tableWidth(widthParam)
+val meshDefault: String = tableWidth() + cardTotal(widthDefault) + cells()*length(lengthDefault) + cardTotal(widthDefault) + tableWidth()
