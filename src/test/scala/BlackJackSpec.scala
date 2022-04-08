@@ -10,6 +10,10 @@ class BlackJackSpec extends AnyWordSpec {
       cells() should be("|                              |" + eo1)
     }
 
+    "have a line separator" in {
+      eo1 should be (sys.props("line.separator"))
+    }
+
     "have a method that checks if the width is valid" in {
       widthCalc(10) should be (10)
       widthCalc(-1) should be (widthDefault)
@@ -85,6 +89,24 @@ class BlackJackSpec extends AnyWordSpec {
         + "|  |    |  |" + eo1
         + "|  +----+  |" + eo1
         + "+----------+" + eo1 )
+    }
+
+    "put everything together to create the whole table with DefaultWidth" in {
+      meshDefault() should be ("+------------------------------+" + eo1
+        + "|            +----+            |" + eo1
+        + "|            |    |            |" + eo1
+        + "|            |    |            |" + eo1
+        + "|            +----+            |" + eo1
+        + "|                              |" + eo1
+        + "|                              |" + eo1
+        + "|                              |" + eo1
+        + "|                              |" + eo1
+        + "|                              |" + eo1
+        + "|            +----+            |" + eo1
+        + "|            |    |            |" + eo1
+        + "|            |    |            |" + eo1
+        + "|            +----+            |" + eo1
+        + "+------------------------------+" + eo1 )
     }
   }
 }

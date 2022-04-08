@@ -84,5 +84,6 @@ def cardTotal(width: Int): String =
 def mesh(width: Int, lengthT: Int): String =
   tableWidth(width) + cardTotal(width) + cells(width) * lengthCalc(lengthT) + cardTotal(width) + tableWidth(width)
 
-val meshDefault: String = tableWidth() + cardTotal(widthDefault) + cells() * lengthCalc(lengthDefault) + cardTotal(widthDefault) + tableWidth()
+def meshDefault(): String =
+  tableWidth() + cardTotal(widthDefault) + cells() * lengthCalc(lengthDefault) + cardTotal(widthDefault) + tableWidth()
 
