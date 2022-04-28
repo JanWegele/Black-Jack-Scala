@@ -1,5 +1,6 @@
 package BlackJack
 
+import java.io.BufferedReader
 import BlackJack.view.TUI
 import scala.io.StdIn.readLine
 
@@ -10,5 +11,6 @@ import scala.io.StdIn.readLine
   
   val tui = new TUI(playerCount)
 
-  println(tui.print(playerCount))
+  println("Starting the TUI: "+tui.eol)
+  tui.processInput(new BufferedReader(Console.in))
 
