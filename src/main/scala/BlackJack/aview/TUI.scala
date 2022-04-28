@@ -1,17 +1,16 @@
-package BlackJack
-package aview
+package BlackJack.aview
 
-import BlackJack.model.CardDeck.*
+import BlackJack.controller.Controller
+import BlackJack.model.CardDeck._
 import BlackJack.model.Grid
 import BlackJack.util.Observer
-import BlackJack.controller.Controller
 
 import scala.io.StdIn.readLine
 import java.io.BufferedReader
 
 
 class TUI(controller: Controller) extends Observer {
-//  controller.add(this)
+  controller.add(this)
 
 
   val playerCount: Int = readLine("Anzahl der Spieler:").toInt

@@ -1,11 +1,9 @@
-package BlackJack
-package controller
+package BlackJack.controller
 
-import model.Grid
-import util.Observable
+import BlackJack.model.Grid
+import BlackJack.util.Observable
 
-
-case class Controller(var grid: Grid) extends Observable:
+case class Controller(var grid: Grid) extends Observable :
   //val undoManager = new UndoManager[Field]
   //def doAndPublish(doThis: Move => Field, move: Move) =
   //  field = doThis(move)
@@ -17,4 +15,4 @@ case class Controller(var grid: Grid) extends Observable:
   //def undo: Field = undoManager.undoStep(field)
   //def redo: Field = undoManager.redoStep(field)
 
-  override def toString = grid.toString
+  override def toString : String = grid.toString
