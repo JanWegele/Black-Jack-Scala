@@ -1,4 +1,5 @@
-package BlackJack.model
+package BlackJack
+package model
 
 import scala.util.Random
 

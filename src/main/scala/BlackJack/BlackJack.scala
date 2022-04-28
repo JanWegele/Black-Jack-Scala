@@ -1,7 +1,7 @@
 package BlackJack
 
 import java.io.BufferedReader
-import BlackJack.view.TUI
+import BlackJack.aview.TUI
 import scala.io.StdIn.readLine
 
 @main def hello(): Unit =
