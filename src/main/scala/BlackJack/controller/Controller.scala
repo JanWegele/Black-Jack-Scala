@@ -17,4 +17,4 @@ case class Controller(var grid: Grid) extends Observable:
   //def undo: Field = undoManager.undoStep(field)
   //def redo: Field = undoManager.redoStep(field)
 
-  override def toString: String = grid.toString
+  override def toString = grid.toString
