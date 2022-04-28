@@ -7,6 +7,7 @@ import scala.io.StdIn.readLine
   println("!!This is BlackJack!!")
   println("---------------------")
   val playerCount : Int = readLine("Anzahl der Spieler: ").toInt
+  
   val tui = new TUI(playerCount)
 
   println(tui.print(playerCount))
