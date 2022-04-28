@@ -1,7 +1,8 @@
-package BlackJack
+package BlackJack.view
 
-import BlackJack.CardDeck._
-import BlackJack.Grid
+import BlackJack.model.CardDeck.*
+import BlackJack.model.Grid
+
 import scala.io.StdIn.readLine
 
 
