@@ -1,3 +1,5 @@
+package BlackJack
+
 import scala.util.Random
 
 object CardDeck extends App {
@@ -43,7 +45,9 @@ object CardDeck extends App {
   val suits = Set(Spade, Heart, Club, Diamond)
   val ranks = List(Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, Ace)
 
-  case class Card(rank: Rank, suit: Suit)
+  case
+
+  class Card(rank: Rank, suit: Suit)
 
   class Deck(pCards: List[Card] = for (r <- ranks; s <- suits) yield Card(r, s)) {
     val cards: List[Card] = if (isValidDeck(pCards)) pCards

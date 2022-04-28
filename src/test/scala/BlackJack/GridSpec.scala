@@ -1,7 +1,9 @@
-import org.scalatest.wordspec.AnyWordSpec
-import org.scalatest.matchers.should.Matchers._
+package BlackJack
 
-class BlackJackSpec extends AnyWordSpec {
+import org.scalatest.matchers.should.Matchers.*
+import org.scalatest.wordspec.AnyWordSpec
+
+class GridSpec extends AnyWordSpec {
   "BlackJack" should {
     "have a table created by Strings where its width is in the form '+------------------------------+'" in {
       tableWidth() should be("+------------------------------+" + eo1)
@@ -36,7 +38,7 @@ class BlackJackSpec extends AnyWordSpec {
       cells(20) should be ("|                    |" + eo1)
       cells(15) should be ("|                |" + eo1)
     }
-
+  
 
     "have cards that adjusts according to the table width calculated by a method" in {
       widthForCard(56) should be (25)
