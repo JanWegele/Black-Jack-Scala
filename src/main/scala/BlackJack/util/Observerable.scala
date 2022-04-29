@@ -1,9 +1,10 @@
-package BlackJack.util
+package BlackJack
+package util
 
 
 
 trait Observer:
-  def update: Unit
+  def update(): Unit
 
 class Observable {
   var subscribers: Vector[Observer] = Vector()
@@ -12,5 +13,5 @@ class Observable {
 
   def remove(s: Observer): Unit = subscribers = subscribers.filterNot(o => o == s)
 
-  def notifyObservers(): Unit = subscribers.foreach(o => o.update)
+  def notifyObservers(): Unit = subscribers.foreach(o => o.update())
 }

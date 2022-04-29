@@ -1,4 +1,5 @@
-package BlackJack.model
+package BlackJack
+package model
 
 class Grid(playerCount : Int) {
   val eol: String = sys.props("line.separator")
