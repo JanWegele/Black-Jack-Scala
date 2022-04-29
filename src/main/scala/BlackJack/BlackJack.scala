@@ -13,9 +13,9 @@ import scala.io.StdIn.readLine
   val playerCount : Int = readLine("Anzahl der Spieler: ").toInt
 
   val controller = new Controller(new Grid(playerCount))
-  val tui = new TUI(controller)
+  val tui = TUI(controller)
   controller.notifyObservers()
 
   println("Starting the TUI: "+tui.eol)
-  tui.processInput(new BufferedReader(Console.in))
+  //tui.inputLoop(tui.grid)
 

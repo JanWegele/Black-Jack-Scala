@@ -6,8 +6,8 @@ import util.Observable
 
 case class Controller(var grid: Grid) extends Observable :
 
-  def createPlayerCountGrid(playercount : Int) : Unit =
-    grid = new Grid(playercount)
+  def createPlayerCountGrid(playerCount : Int) : Unit =
+    grid = new Grid(playerCount)
     notifyObservers()
 
 
