@@ -17,5 +17,5 @@ import scala.io.StdIn.readLine
   controller.notifyObservers()
 
   println("Starting the TUI: "+tui.eol)
-  //tui.inputLoop(tui.grid)
+  //tui.inputLoop(controller.grid)
 
