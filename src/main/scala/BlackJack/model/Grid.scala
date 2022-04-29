@@ -1,8 +1,8 @@
-package BlackJack.model
+package BlackJack
+package model
 
-class Grid(playerCount: Int) {
+class Grid(playerCount : Int) {
   val eol: String = sys.props("line.separator")
-
   val totalWidth: Int = playerCount * 10 + 3
   val dealerGap: Int = (totalWidth - 7) / 2
 
