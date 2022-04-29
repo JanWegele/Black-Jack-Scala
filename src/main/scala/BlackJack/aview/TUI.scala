@@ -2,7 +2,7 @@ package BlackJack
 package aview
 
 import controller.Controller
-import model.CardDeck._
+import model.Deck
 import model.Grid
 import util.Observer
 
@@ -13,7 +13,7 @@ import java.io.BufferedReader
 case class TUI(controller: Controller) extends Observer {
   controller.add(this)
 
-  val grid = controller.grid
+  val grid: Grid = controller.grid
   val deck = new Deck()
   val eol: String = grid.eol
 

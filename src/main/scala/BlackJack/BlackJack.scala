@@ -12,7 +12,7 @@ import scala.io.StdIn.readLine
   println("---------------------")
   val playerCount : Int = readLine("Anzahl der Spieler: ").toInt
 
-  val controller = new Controller(new Grid(playerCount))
+  val controller = Controller(new Grid(playerCount))
   val tui = TUI(controller)
   controller.notifyObservers()
 
