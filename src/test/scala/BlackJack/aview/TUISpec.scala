@@ -14,7 +14,7 @@ class TUISpec extends AnyWordSpec {
     "create a new BlackJack table on input 'c'" in {
       tui.inputLoop("c")
       tui.grid.render() should be(
-        "+-----------------------+" + tui.eol +
+          "+-----------------------+" + tui.eol +
           "|                       |" + tui.eol +
           "|        +-----+        |" + tui.eol +
           "|        |     |        |" + tui.eol +
