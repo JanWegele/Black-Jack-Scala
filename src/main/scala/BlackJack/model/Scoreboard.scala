@@ -22,9 +22,9 @@ class Scoreboard(playerCount: Int) {
   def printScoreboard(): String = {
     "Spieler\tScore\tCards" + eol +
     "Dealer\t" + dealer.score + "\t\t" + dealer.playerDeck.getDeckAsString + eol
-    for(player<-playerList) {
-      player.toString + "\t" + player.score + player.playerDeck.getDeckAsString + eol
-    }
+//    for(player<-playerList) {
+//      player.toString + "\t" + player.score + player.playerDeck.getDeckAsString + eol
+//    }
 //    playerList.(player => {
 //      println(player.toString + "\t" + player.score + player.playerDeck.getDeckAsString + eol)
 //    })
