@@ -8,7 +8,7 @@ import BlackJack.model.{Grid, Scoreboard}
 import scala.io.StdIn.readLine
 
 @main def hello(): Unit =
-  println("!!This is BlackJack!!")
+  println("!!This is BlackJack!!!")
   println("---------------------")
   val playerCount : Int = readLine("Anzahl der Spieler: ").toInt
 
