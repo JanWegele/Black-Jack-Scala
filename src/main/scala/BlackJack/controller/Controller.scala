@@ -14,7 +14,6 @@ case class Controller(var scoreboard: Scoreboard) extends Observable :
   def put(create: CreateDeck) : String =
     scoreboard.printScoreboard()
 
-  def createPlayer(name: String): Unit =
-    val p = new Player(name)
+  def createPlayer(name: String): Player = Player(name)
 
   override def toString : String = scoreboard.toString

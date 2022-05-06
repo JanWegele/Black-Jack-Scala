@@ -10,10 +10,10 @@ class Scoreboard(playerCount: Int) {
   var playerList = new ListBuffer[Player]
 
 
-  def playerScore(): String = {
-    val str = ""
-    for (i <- 0 until playerCount) {
-      str + playerList(i).toString + playerList(i).score + playerList(i).playerDeck.getDeckAsString + eol
+  def allPlayerScores(): String = {
+    val str = playerList.head.playerScore()
+    for (i <- 1 until this.playerCount) {
+      str + playerList(i).playerScore()
     }
     str
   }
@@ -22,9 +22,10 @@ class Scoreboard(playerCount: Int) {
     this.playerCount
 
   def printScoreboard(): String = {
+    println("Scoreboard: " + this.allPlayerScores())
     "Spieler\tScore\tCards" + eol +
     "Dealer\t" + dealer.score + "\t\t" + dealer.playerDeck.getDeckAsString + eol +
-    this.playerScore() +
+      this.allPlayerScores() +
     playerList.toString()
   }
 }
