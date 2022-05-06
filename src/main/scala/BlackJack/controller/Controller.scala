@@ -1,20 +1,20 @@
 package BlackJack
 package controller
 
-import model.{CreateDeck, Grid, Player}
+import model.{CreateDeck, Scoreboard, Player}
 import util.Observable
 
 
-case class Controller(var grid: Grid) extends Observable :
+case class Controller(var scoreboard: Scoreboard) extends Observable :
 
-  def doAndPublish(doThis: CreateDeck => Grid, create: CreateDeck): Unit =
-    grid = doThis(create)
+  def doAndPublish(doThis: CreateDeck => Scoreboard, create: CreateDeck): Unit =
+    scoreboard = doThis(create)
     notifyObservers()
 
   def put(create: CreateDeck) : String =
-    grid.render()
+    scoreboard.printScoreboard()
 
   def createPlayer(name: String): Unit =
-    val p = new Player(name, 0)
+    val p = new Player(name)
 
-  override def toString : String = grid.toString
+  override def toString : String = scoreboard.toString
