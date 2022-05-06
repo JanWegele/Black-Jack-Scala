@@ -6,14 +6,14 @@ import BlackJack.aview.TUI
 
 class Scoreboard(playerCount: Int) {
   val eol: String = sys.props("line.separator")
-  var dealer = new Player("Dealer")
+  var dealer: Player = Player("Dealer", Deck(), 0 )
   var playerList = new ListBuffer[Player]
 
 
   def allPlayerScores(): String = {
-    val str = playerList.head.playerScore()
+    val str = playerList.head.playerScore.toString
     for (i <- 1 until this.playerCount) {
-      str + playerList(i).playerScore()
+      str + playerList(i).playerScore
     }
     str
   }
@@ -24,7 +24,7 @@ class Scoreboard(playerCount: Int) {
   def printScoreboard(): String = {
     println("Scoreboard: " + this.allPlayerScores())
     "Spieler\tScore\tCards" + eol +
-    "Dealer\t" + dealer.score + "\t\t" + dealer.playerDeck.getDeckAsString + eol +
+    "Dealer\t" + dealer.playerScore.toString + "\t\t" + dealer.playerDeck.getDeckAsString + eol +
       this.allPlayerScores() +
     playerList.toString()
   }

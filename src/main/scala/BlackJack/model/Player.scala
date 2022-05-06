@@ -1,23 +1,20 @@
 package BlackJack
 package model
 
-class Player(name : String) {
-  
-  var score = 0
-  var playerDeck = new Deck()
+case class Player(name : String, playerDeck : Deck, playerScore : Int) {
   val eol: String = sys.props("line.separator")
 //  playerDeck = playerDeck.shuffle()
-  playerDeck.cards.clear()
 
-  def playerScore(): String = {
-    this.toString + "\t" + score +"\t"+ playerDeck.getDeckAsString + eol
+//  def playerScore(): String = {
+//    this.toString + "\t" + score +"\t"+ playerDeck.getDeckAsString + eol
+//  }
+
+  def changeScore(score : Int): Int = {
+    score
+
   }
 
-  def changeScore(score : Int): Unit = {
-    this.score += score
-  }
-
-  def addToDeck(card: Card): Unit = {
+  def addToDeck(card: Card): Deck = {
     playerDeck.addToTop(card)
   }
 
