@@ -15,7 +15,7 @@ case class TUI(controller: Controller) extends Observer {
   controller.add(this)
 
   val scoreboard: Scoreboard = controller.scoreboard
-  val playDeck: Deck = new Deck().shuffle()
+  val playDeck = new Deck()
 //  deck.shuffle()
   val eol: String = scoreboard.eol
   val playerCount: Int = controller.scoreboard.returnPlayerCount()
