@@ -10,7 +10,7 @@ class DeckSpec extends AnyWordSpec {
   val deck = Deck()
   "deck" should {
     "shuffle and return a new Deck" in {
-      deck.shuffle().getClass should be(Deck)
+      deck.shuffle().getClass should be(BlackJack.model.Deck)
     }
     "add a card to the top of a given deck" in {
       deck.addToTop(Card(Suit.Heart, Rank.Ace))
