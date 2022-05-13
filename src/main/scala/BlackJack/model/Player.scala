@@ -1,7 +1,7 @@
 package BlackJack
 package model
 
-case class Player(name : String, playerDeck : Deck, playerScore : Int) {
+case class Player(name : String, playerScore : Int, playerDeck : Deck) {
   val eol: String = sys.props("line.separator")
 //  playerDeck = playerDeck.shuffle()
 
