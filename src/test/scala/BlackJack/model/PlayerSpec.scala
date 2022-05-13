@@ -13,7 +13,7 @@ class PlayerSpec extends AnyWordSpec {
       player.changeScore(21) should be (21)
     }
     "have a name" in {
-      player.name should be("Bernhardt")
+      player.name should be("Bernhardt")//debug
     }
     "be able to add a Card to the top of the Deck" in {
       player.addToDeck(cardPlayer) should be (deckPlayer.addToTop(cardPlayer))
