@@ -11,7 +11,7 @@ import scala.collection.mutable.ListBuffer
 object Deck {
   def apply() : Deck = {
     val cards = for(s<-Suit.values; r<- Rank.values) yield Card(s, r)
-    if( cards.size <= 52 && cards.distinct.size == cards.size )
+    if( cards.length <= 52 && cards.distinct.length == cards.length )
       Deck( cards = cards.toList )
     else throw new RuntimeException("Invalid Deck")
   }
@@ -28,9 +28,9 @@ case class Deck( cards: List[Card] ) {
   def shuffle() = new Deck(Random.shuffle(cards)) //Factory-Method?
 
   def getDeckAsString: String =
-    var deckAsString: String = ""
+    val deckAsString: String = ""
     for(element <- cards){
-      deckAsString = deckAsString + element.suit.toString + element.rank.toString + ","
+      deckAsString.concat(element.toString + ",")
     }
     deckAsString
     //Strategy

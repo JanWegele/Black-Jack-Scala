@@ -3,11 +3,6 @@ package model
 
 case class Player(name : String, playerScore : Int, playerDeck : Deck) {
   val eol: String = sys.props("line.separator")
-//  playerDeck = playerDeck.shuffle()
-
-//  def playerScore(): String = {
-//    this.toString + "\t" + score +"\t"+ playerDeck.getDeckAsString + eol
-//  }
 
   def changeScore(score : Int): Int = {
     score
@@ -18,5 +13,5 @@ case class Player(name : String, playerScore : Int, playerDeck : Deck) {
     playerDeck.addToTop(card)
   }
 
-  override def toString: String = this.name
+  override def toString: String = this.name + "\t" + this.playerScore + "\t" + this.playerDeck.getDeckAsString
 }
