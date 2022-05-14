@@ -5,30 +5,34 @@ package model
 import scala.collection.mutable
 import scala.util.Random
 import model.Card
-
 import scala.collection.mutable.ListBuffer
 
-class Deck(pCards: List[Card] = for(s <- Suits.suits; r <- Ranks.ranks) yield Card  (s, r)) {
-  val cards = if(isValidDeck(pCards)) pCards.to(ListBuffer)
-  else throw new RuntimeException("Invalid Deck")
 
-  def pullFromTop(): Card =
-    val topCard = Card(cards.head.suit, cards.head.rank)
-    cards.remove(0)
-    topCard
+object Deck {
+  def apply() : Deck = {
+    val cards = for(s<-Suit.values; r<- Rank.values) yield Card(s, r)
+    if( cards.length <= 52 && cards.distinct.length == cards.length )
+      Deck( cards = cards.toList )
+    else throw new RuntimeException("Invalid Deck")
+  }
 
-  def addToTop(card: Card) = cards.addOne(card)
+}
 
-  def shuffle() = new Deck(Random.shuffle(pCards))
+case class Deck( cards: List[Card]) {
+
+  def pullFromTop() : (Card, Deck) = (cards.head, copy(cards.tail))
+
+  def addToTop(card: Card): Deck = copy(card :: cards)
+
+  def shuffle() = new Deck(Random.shuffle(cards)) //Factory-Method?
 
   def getDeckAsString: String =
-    var deckAsString: String = ""
+    val deckAsString: String = ""
     for(element <- cards){
-      deckAsString = deckAsString + element.suit.toString + element.rank.toString + ","
+      deckAsString.concat(element.toString + ",")
     }
     deckAsString
-
-  private def isValidDeck(cards: List[Card]) = cards.size <= 52 && cards.distinct.size == cards.size
+    //Strategy
 }
 
 

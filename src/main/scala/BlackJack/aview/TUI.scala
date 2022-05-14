@@ -2,7 +2,7 @@ package BlackJack
 package aview
 
 import controller.Controller
-import model.{Deck, Grid, Player, Scoreboard}
+import model.{CreatePlayer, Deck, Game, Grid, Player}
 import util.Observer
 
 import scala.io.StdIn.readLine
@@ -12,28 +12,23 @@ import scala.util.Random
 
 
 case class TUI(controller: Controller) extends Observer {
+  val eol: String = sys.props("line.separator")
   controller.add(this)
+  for (i <- 1 to controller.game.playerCount)
+    val inputName: String = readLine(s"Name Spieler $i: ")
+    controller.doAndPublish( controller.put, CreatePlayer( inputName ) )
 
-  val scoreboard: Scoreboard = controller.scoreboard
-  val playDeck = new Deck()
-//  deck.shuffle()
-  val eol: String = scoreboard.eol
-  val playerCount: Int = controller.scoreboard.returnPlayerCount()
-  for (i <- 1 to playerCount)
-    val inputName: String = readLine(s"Name Spieler ${i}: ")
-    val p = new Player(inputName)
-    scoreboard.playerList.addOne(p)
 
-  def inputLoop(scoreboard: Scoreboard): Unit =
+  def inputLoop(game : Game): Unit =
     val input = readLine("Input: ")
     input match {
       case "q" => sys.exit()
-      case "c" => println("Erstelle einen BlackJack Tisch" + eol + eol + scoreboard.printScoreboard())
+      case "c" => println("Erstelle einen BlackJack Tisch" + eol + eol + game.printScoreboard())
 //      case "s" => deck.shuffle()
 //        println("Kartendeck mischen")
       case _ => println("Falscher Input")
     }
-    inputLoop(scoreboard)
+    inputLoop(game)
 
   override def update(): Unit = println(controller.toString)
 
