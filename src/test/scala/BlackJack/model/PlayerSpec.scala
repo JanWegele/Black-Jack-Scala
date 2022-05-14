@@ -5,9 +5,9 @@ import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
 
 class PlayerSpec extends AnyWordSpec {
-  val deckPlayer = Deck()
-  val cardPlayer = Card(Suit.Spade, Rank.Queen)
-  val player = Player("Bernhardt", 0, deckPlayer)
+  val deckPlayer: Deck = Deck(List[Card](Card(Suit.Spade, Rank.Queen)))
+  val cardPlayer: Card = Card(Suit.Spade, Rank.Queen)
+  val player: Player = Player("Bernhardt", 0, deckPlayer)
   "Player" should {
     "be able to change his score" in {
       player.changeScore(21) should be (21)

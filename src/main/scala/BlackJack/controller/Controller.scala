@@ -1,8 +1,9 @@
 package BlackJack
 package controller
 
-import model.{Deck, Game, Move, Player}
+import model.{Card, Deck, Game, Move, Player}
 import util.Observable
+import scala.Option
 
 
 case class Controller(var game: Game) extends Observable {

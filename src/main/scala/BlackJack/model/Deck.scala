@@ -15,15 +15,14 @@ object Deck {
       Deck( cards = cards.toList )
     else throw new RuntimeException("Invalid Deck")
   }
+
 }
 
-case class Deck( cards: List[Card] ) {
-
-
+case class Deck( cards: List[Card]) {
 
   def pullFromTop() : (Card, Deck) = (cards.head, copy(cards.tail))
 
-  def addToTop(card: Card): Deck = copy(cards = card :: cards)
+  def addToTop(card: Card): Deck = copy(card :: cards)
 
   def shuffle() = new Deck(Random.shuffle(cards)) //Factory-Method?
 
