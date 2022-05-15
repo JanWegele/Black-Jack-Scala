@@ -2,11 +2,11 @@ package BlackJack.model
 
 import scala.collection.mutable.ListBuffer
 
-case class Game(playerList: List[Player], gameDeck: Deck, playerTurn: Int, playerCount : Int) {
+case class Game(playerList: ListBuffer[Player], gameDeck: Deck, playerTurn: Int, playerCount : Int) {
 
-  def addDealer(): Game = copy(playerList = Player("Dealer", 0, Deck()) :: playerList)
+  def addDealer(): Game = this.copy(playerList.addOne(Player("Dealer", 0, Deck(ListBuffer[Card]()))))
 
-  def addPlayer(name: String): Game = copy(playerList = Player(name, 0, Deck()) :: playerList)
+  def addPlayer(name: String): Game = this.copy(playerList.addOne(Player(name, 0, Deck(ListBuffer[Card]()))))
 
   def allPlayerScores(): String = {
     val eol: String = sys.props("line.separator")
