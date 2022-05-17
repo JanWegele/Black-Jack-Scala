@@ -12,7 +12,7 @@ import scala.io.StdIn.readLine
   println("!!This is BlackJack!!!")
   println("---------------------")
   val playerCount : Int = readLine("Anzahl der Spieler: ").toInt
-  val controller = Controller(Game(playerList = ListBuffer[Player](), gameDeck = Deck(ListBuffer[Card]()), 0, playerCount))
+  val controller = Controller(Game(playerList = List[Player](), gameDeck = Deck(List[Card]()), 0, playerCount))
   val tui = TUI(controller)
   controller.notifyObservers()
 

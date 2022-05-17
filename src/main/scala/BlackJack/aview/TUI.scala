@@ -2,7 +2,7 @@ package BlackJack
 package aview
 
 import controller.Controller
-import model.{CreatePlayer, Deck, Game, Grid, Player}
+import model.{Deck, Game, Grid, Player}
 import util.Observer
 
 import scala.io.StdIn.readLine
@@ -16,7 +16,7 @@ case class TUI(controller: Controller) extends Observer {
   controller.add(this)
   for (i <- 1 to controller.game.playerCount)
     val inputName: String = readLine(s"Name Spieler $i: ")
-    controller.doAndPublish( controller.put, CreatePlayer( inputName ) )
+//    controller.doAndPublish( controller.put, CreatePlayer( inputName ) )
 
 
   def inputLoop(game : Game): Unit =

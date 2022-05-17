@@ -16,7 +16,7 @@ case class Controller(var game: Game) extends Observable {
 
   def put(move: Move): Game = move.doStep(game)
 
-  def createPlayer(name: String): Player = Player(name, 0, Deck(ListBuffer[Card]()))
+  def createPlayer(name: String): Player = Player(name, 0, Deck(List[Card]()))
 
 }
 
