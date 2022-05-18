@@ -1,79 +1,39 @@
 package BlackJack
 package model
 
-enum Rank :
-  case Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, Ace
+enum Rank(display: String) :
+  case Two extends Rank("2")
+  case Three extends Rank("3")
+  case Four extends Rank("4")
+  case Five extends Rank("5")
+  case Six extends Rank("6")
+  case Seven extends Rank("7")
+  case Eight extends Rank("8")
+  case Nine extends Rank("9")
+  case Ten extends Rank("10")
+  case Jack extends Rank("J")
+  case Queen extends Rank("Q")
+  case King extends Rank("K")
+  case Ace extends Rank("A")
+
+  override def toString: String = display
 end Rank
 
-enum Suit :
-  case Spade, Heart, Diamond, Club
+enum Suit(display : String) :
+  case Spade extends Suit("♠")
+  case Heart extends Suit("♥")
+  case Diamond extends Suit("♦")
+  case Club extends Suit("♣")
+
+  override def toString : String = display
 end Suit
 
 case class Card(suit: Suit, rank: Rank) {
-  override def toString: String = {
-    val s = this.suit
-    val r = this.rank
-    s match
-      case Suit.Spade => r match
-        case Rank.Ace => "♠A"
-        case Rank.Two => "♠2"
-        case Rank.Three => "♠3"
-        case Rank.Four => "♠4"
-        case Rank.Five => "♠5"
-        case Rank.Six => "♠6"
-        case Rank.Seven => "♠7"
-        case Rank.Eight => "♠8"
-        case Rank.Nine => "♠9"
-        case Rank.Ten => "♠10"
-        case Rank.Jack => "♠J"
-        case Rank.Queen => "♠Q"
-        case Rank.King => "♠K"
 
-      case Suit.Heart => r match
-        case Rank.Ace => "♥A"
-        case Rank.Two => "♥2"
-        case Rank.Three => "♥3"
-        case Rank.Four => "♥4"
-        case Rank.Five => "♥5"
-        case Rank.Six => "♥6"
-        case Rank.Seven => "♥7"
-        case Rank.Eight => "♥8"
-        case Rank.Nine => "♥9"
-        case Rank.Ten => "♥10"
-        case Rank.Jack => "♥J"
-        case Rank.Queen => "♥Q"
-        case Rank.King => "♥K"
+  val s: Suit = this.suit
+  val r: Rank = this.rank
 
-      case Suit.Diamond => r match
-        case Rank.Ace => "♦A"
-        case Rank.Two => "♦2"
-        case Rank.Three => "♦3"
-        case Rank.Four => "♦4"
-        case Rank.Five => "♦5"
-        case Rank.Six => "♦6"
-        case Rank.Seven => "♦7"
-        case Rank.Eight => "♦8"
-        case Rank.Nine => "♦9"
-        case Rank.Ten => "♦10"
-        case Rank.Jack => "♦J"
-        case Rank.Queen => "♦Q"
-        case Rank.King => "♦K"
-
-      case Suit.Club => r match
-        case Rank.Ace => "♣A"
-        case Rank.Two => "♣2"
-        case Rank.Three => "♣3"
-        case Rank.Four => "♣4"
-        case Rank.Five => "♣5"
-        case Rank.Six => "♣6"
-        case Rank.Seven => "♣7"
-        case Rank.Eight => "♣8"
-        case Rank.Nine => "♣9"
-        case Rank.Ten => "♣10"
-        case Rank.Jack => "♣J"
-        case Rank.Queen => "♣Q"
-        case Rank.King => "♣K"
-  }
+  override def toString: String = s.toString + r.toString
 }
 
 

@@ -15,26 +15,28 @@ object Deck {
       Deck( cards = cards.toList )
     else throw new RuntimeException("Invalid Deck")
   }
-
+//Singleton-Pattern
 }
 
 case class Deck( cards: List[Card]) {
 
   def pullFromTop() : (Card, Deck) = (cards.head, copy(cards.tail))
 
-  def addToTop(card: Card): Deck = copy(card :: cards)
+  def addToTop(card: Card):Deck = {
+    Deck(card :: cards)
+  }
 
   def shuffle() = new Deck(Random.shuffle(cards)) //Factory-Method?
 
   def getDeckAsString: String =
-    val deckAsString: String = ""
-    for(element <- cards){
-      deckAsString.concat(element.toString + ",")
-    }
+    var deckAsString: String = cards.head.toString
+    for(card <- cards.tail)
+      deckAsString += ("," + card.toString)
     deckAsString
-    //Strategy
-}
+  //Strategy
 
+
+}
 
 
 

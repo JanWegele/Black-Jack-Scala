@@ -6,12 +6,12 @@ case class Player(name : String, playerScore : Int, playerDeck : Deck) {
 
   def changeScore(score : Int): Int = {
     score
-
   }
+  
 
   def addToDeck(card: Card): Deck = {
     playerDeck.addToTop(card)
   }
 
-  override def toString: String = this.name + "\t" + this.playerScore + "\t" + this.playerDeck.getDeckAsString
+  override def toString: String = this.name // + "\t" + this.playerScore + "\t" + this.playerDeck.getDeckAsString
 }

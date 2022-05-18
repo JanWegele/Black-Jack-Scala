@@ -3,6 +3,7 @@ package model
 
 import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers._
+import scala.collection.mutable.ListBuffer
 
 class PlayerSpec extends AnyWordSpec {
   val deckPlayer: Deck = Deck(List[Card](Card(Suit.Spade, Rank.Queen)))
