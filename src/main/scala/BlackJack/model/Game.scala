@@ -6,11 +6,9 @@ import org.xml.sax.ext.DeclHandler
 
 case class Game(playerList: List[Player], gameDeck: Deck, playerTurn: Int, playerCount: Int) {
 
-  def createPlayerList() : Game = {
-    val playerList : List[Player] = List.fill(playerCount + 1)(Player("p", 0, Deck()))
-    playerList.updated(0, Player("Dealer", 0, Deck(List[Card]())))
-    this.copy(playerList = playerList)
-  }
+  def addDealer() : Game = this.copy(playerList = List(Player("Dealer", 0, Deck())))
+
+  def addPlayer(playerName : String) : Game = this.copy(playerList = playerList :+ Player(playerName, 0 , Deck()))
 
   def addToTop(card: Card, player: Player): Game = {
     this.copy(
@@ -24,19 +22,17 @@ case class Game(playerList: List[Player], gameDeck: Deck, playerTurn: Int, playe
   }
 
   def drawCard(player: Player): Game = {
-    val index = playerList.indexOf(player)
-    val topCard = this.gameDeck.cards.head
-    val oldPlayerDeck = Deck(this.playerList(index).playerDeck.cards)
-    val updatedPlayer = this.playerList(index).copy(playerDeck = oldPlayerDeck.addToTop(topCard))
-    this.copy(playerList = this.playerList.updated(index, updatedPlayer),
+    this.copy(
+      playerList = this.playerList.updated(playerList.indexOf(player),
+        this.playerList(playerList.indexOf(player)).copy(playerDeck = Deck(this.playerList(playerList.indexOf(player)).playerDeck.cards).addToTop(this.gameDeck.cards.head))),
       gameDeck = this.gameDeck.copy(this.gameDeck.cards.tail))
   }
 
   def allPlayerScores(): String = {
-    val eol: String = sys.props("line.separator")
-    val str: String = ""
-    for (player <- playerList) {
-      str.concat(player.toString + eol)
+//    val eol: String = sys.props("line.separator")
+    var str: String = playerList.head.toString
+    for (player <- playerList.tail) {
+      str = str.concat("," + player.toString)
     }
     str
   }
