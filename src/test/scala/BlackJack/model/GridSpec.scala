@@ -1,8 +1,8 @@
 package BlackJack
 package model
 
+import org.scalatest.matchers.should.Matchers.*
 import org.scalatest.wordspec.AnyWordSpec
-import org.scalatest.matchers.should.Matchers._
 
 class GridSpec extends AnyWordSpec {
   val grid = new Grid(2)

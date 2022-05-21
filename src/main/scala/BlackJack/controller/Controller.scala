@@ -1,11 +1,12 @@
 package BlackJack
 package controller
 
-import model.{Card, Deck, Game, Move, Player}
-import util.Observable
+import BlackJack.model.*
+import BlackJack.util.Observable
 
 import scala.Option
 import scala.collection.mutable.ListBuffer
+
 
 
 case class Controller(var game: Game) extends Observable {
@@ -16,7 +17,14 @@ case class Controller(var game: Game) extends Observable {
 
   def put(move: Move): Game = move.doStep(game)
 
-  def createPlayer(name: String): Player = Player(name, 0, Deck(List[Card]()))
+  //  def createPlayer(name: String): Move =
 
+
+
+//  def redo() : Unit
+
+//  def undo() : Unit
+
+  override def toString: String = game.toString
 }
 

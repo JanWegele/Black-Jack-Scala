@@ -1,8 +1,8 @@
 package BlackJack
 package model
 
-import org.scalatest.wordspec.AnyWordSpec
 import org.scalatest.matchers.should.Matchers.*
+import org.scalatest.wordspec.AnyWordSpec
 
 class CardSpec extends AnyWordSpec {
   val card: Card = Card(Suit.Heart, Rank.Ace)

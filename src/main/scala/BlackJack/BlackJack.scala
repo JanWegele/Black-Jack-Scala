@@ -1,18 +1,19 @@
 package BlackJack
 
-import java.io.BufferedReader
 import BlackJack.aview.TUI
 import BlackJack.controller.Controller
-import BlackJack.model.{Deck, Game, Grid, Player, Card}
+import BlackJack.model.*
 
+import java.io.BufferedReader
 import scala.collection.mutable.ListBuffer
 import scala.io.StdIn.readLine
 
 @main def hello(): Unit =
   println("!!This is BlackJack!!!")
   println("---------------------")
-  val playerCount : Int = readLine("Anzahl der Spieler: ").toInt
-  val controller = Controller(Game(playerList = List[Player](), gameDeck = Deck(List[Card]()), 0, playerCount))
+  val playerCount: Int = readLine("Anzahl der Spieler: ").toInt
+  val game : Game = Game(PlayerList(), Deck.apply("filled"), playerCount, 0 )
+  val controller = Controller(game)
   val tui = TUI(controller)
   controller.notifyObservers()
 

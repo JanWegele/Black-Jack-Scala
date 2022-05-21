@@ -1,7 +1,7 @@
 package BlackJack
 package model
 
-enum Rank(display: String) :
+enum Rank(display: String):
   case Two extends Rank("2")
   case Three extends Rank("3")
   case Four extends Rank("4")
@@ -19,14 +19,16 @@ enum Rank(display: String) :
   override def toString: String = display
 end Rank
 
-enum Suit(display : String) :
+enum Suit(display: String):
   case Spade extends Suit("♠")
   case Heart extends Suit("♥")
   case Diamond extends Suit("♦")
   case Club extends Suit("♣")
 
-  override def toString : String = display
+  override def toString: String = display
 end Suit
+
+//Bridge-Pattern?????
 
 case class Card(suit: Suit, rank: Rank) {
 
@@ -35,5 +37,4 @@ case class Card(suit: Suit, rank: Rank) {
 
   override def toString: String = s.toString + r.toString
 }
-
 
