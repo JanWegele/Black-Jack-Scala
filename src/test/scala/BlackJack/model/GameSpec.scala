@@ -9,16 +9,13 @@ import scala.collection.mutable.ListBuffer
 class GameSpec extends AnyWordSpec {
   val p1: Player = Player("Max", 0, Deck.apply("empty"))
   val p2: Player = Player("Tim", 0, Deck.apply("empty"))
-  val playerList : PlayerList = playerList.add(p1).add(p2)
+  val playerList : PlayerList = PlayerList.apply().add(p1).add(p2)
   val game: Game = Game (playerList, Deck.apply("filled"), 0, 2)
 
 
   "game" should {
-    "add the dealer to the game" in {
-      game.addDealer().playerList.toString should be ("List(Dealer)")
-    }
     "add a player to the game" in {
-      game.addPlayer("Tom").playerList.toString should be ("List(Max, Tim, Tom)")
+      game.addPlayer("Tom").playerList.playerList.toString() should be ("List(Dealer, Max, Tim, Tom)")
     }
 //    "add card to top of a playerdeck" in {
 //      game.addToTop(Card(Suit.Heart, Rank.Ace),p1).playerList(playerList.indexOf(p1)).playerDeck.head should be (Card(Suit.Heart, Rank.Ace))

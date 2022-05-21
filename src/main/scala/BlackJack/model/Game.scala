@@ -8,8 +8,6 @@ import model.PlayerList
 //Facade Patterm
 case class Game(playerList: PlayerList, gameDeck: Deck, playerCount: Int, playerTurn : Int):
 
-  def addDealer(): Game = this.copy(playerList = playerList.add(Player("Dealer", 0, Deck.apply("empty"))))
-
   def addPlayer(playerName: String): Game = this.copy(playerList = playerList.add(Player(playerName, 0, Deck.apply("empty"))))
 
 //  def addToTop(card: Card, player: Player): Game =
